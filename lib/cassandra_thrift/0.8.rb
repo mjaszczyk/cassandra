@@ -4,4 +4,4 @@ class Cassandra
   end
 end
 
-require "#{File.expand_path(File.dirname(__FILE__))}/../cassandra_thrift"
+require "#{File.expand_path(File.dirname(__FILE__))}/../cassandra"
