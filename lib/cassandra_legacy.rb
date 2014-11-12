@@ -31,7 +31,7 @@ require 'cassandra_legacy/protocol'
 require 'cassandra_legacy/batch'
 require "cassandra_legacy/#{CassandraLegacy.VERSION}/columns"
 require "cassandra_legacy/#{CassandraLegacy.VERSION}/protocol"
-require "cassandra_legacy/cassandra"
+require "cassandra_legacy/cassandra_legacy"
 require "cassandra_legacy/#{CassandraLegacy.VERSION}/cassandra"
 unless CassandraLegacy.VERSION.eql?("0.6")
   require "cassandra_legacy/column_family"
