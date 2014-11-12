@@ -940,7 +940,7 @@ class CassandraLegacy
   #
   # TODO: Supercolumn support.
   def get_indexed_slices(column_family, index_clause, *columns_and_options)
-    return false if Cassandra.VERSION.to_f < 0.7
+    return false if CassandraLegacy.VERSION.to_f < 0.7
 
     column_family, columns, _, options =
       extract_and_validate_params(column_family, [], columns_and_options,
