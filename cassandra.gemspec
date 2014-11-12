@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/cassandra-rb/cassandra"
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Cassandra", "--main", "README.md"]
   s.require_paths = ["lib", "ext"]
-  s.rubyforge_project = "cassandra"
+  s.rubyforge_project = "cassandra_thrift"
   s.rubygems_version = "1.8.17"
   s.summary = "A Ruby client for the Cassandra distributed database."
   s.test_files = ["test/cassandra_client_test.rb", "test/cassandra_mock_test.rb", "test/cassandra_test.rb", "test/comparable_types_test.rb", "test/composite_type_test.rb", "test/eventmachine_test.rb", "test/ordered_hash_test.rb", "test/test_helper.rb"]
