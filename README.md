@@ -42,7 +42,7 @@ To use the default version simply use a normal require:
 To use a specific version (1.0 in this example) you would use a
 slightly differently formatted require:
 
-    require 'cassandra/1.0'
+    require 'cassandra_thrift/1.0'
 
 #### Environment Variable Method
 These mechanisms work well when you are using the cassandra gem in your
