@@ -1,38 +1,38 @@
 require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 require File.expand_path(File.dirname(__FILE__) + '/cassandra_test')
-require 'cassandra_thrift/mock'
+require 'cassandra_legacy/mock'
 require 'json'
 
 class CassandraMockTest < CassandraTest
-  include Cassandra::Constants
+  include CassandraLegacy::Constants
 
   def setup
     @test_schema = JSON.parse(File.read(File.join(File.expand_path(File.dirname(__FILE__)), '..','conf', CASSANDRA_VERSION, 'schema.json')))
-    @twitter = Cassandra::Mock.new('Twitter', @test_schema)
+    @twitter = CassandraLegacy::Mock.new('Twitter', @test_schema)
     @twitter.clear_keyspace!
 
-    @blogs = Cassandra::Mock.new('Multiblog', @test_schema)
+    @blogs = CassandraLegacy::Mock.new('Multiblog', @test_schema)
     @blogs.clear_keyspace!
 
-    @blogs_long = Cassandra::Mock.new('MultiblogLong', @test_schema)
+    @blogs_long = CassandraLegacy::Mock.new('MultiblogLong', @test_schema)
     @blogs_long.clear_keyspace!
 
-    @type_conversions = Cassandra::Mock.new('TypeConversions', @test_schema)
+    @type_conversions = CassandraLegacy::Mock.new('TypeConversions', @test_schema)
     @type_conversions.clear_keyspace!
 
     @uuids = (0..6).map {|i| SimpleUUID::UUID.new(Time.at(2**(24+i))) }
     @longs = (0..6).map {|i| Long.new(Time.at(2**(24+i))) }
     @composites = [
-      Cassandra::Composite.new([5].pack('N'), "zebra"),
-      Cassandra::Composite.new([5].pack('N'), "aardvark"),
-      Cassandra::Composite.new([1].pack('N'), "elephant"),
-      Cassandra::Composite.new([10].pack('N'), "kangaroo"),
+      CassandraLegacy::Composite.new([5].pack('N'), "zebra"),
+      CassandraLegacy::Composite.new([5].pack('N'), "aardvark"),
+      CassandraLegacy::Composite.new([1].pack('N'), "elephant"),
+      CassandraLegacy::Composite.new([10].pack('N'), "kangaroo"),
     ]
     @dynamic_composites = [
-      Cassandra::DynamicComposite.new(['i', [5].pack('N')], ['UTF8Type', "zebra"]),
-      Cassandra::DynamicComposite.new(['i', [5].pack('N')], ['UTF8Type', "aardvark"]),
-      Cassandra::DynamicComposite.new(['IntegerType', [1].pack('N')], ['s', "elephant"]),
-      Cassandra::DynamicComposite.new(['IntegerType', [10].pack('N')], ['s', "kangaroo"]),
+      CassandraLegacy::DynamicComposite.new(['i', [5].pack('N')], ['UTF8Type', "zebra"]),
+      CassandraLegacy::DynamicComposite.new(['i', [5].pack('N')], ['UTF8Type', "aardvark"]),
+      CassandraLegacy::DynamicComposite.new(['IntegerType', [1].pack('N')], ['s', "elephant"]),
+      CassandraLegacy::DynamicComposite.new(['IntegerType', [10].pack('N')], ['s', "kangaroo"]),
     ]
   end
 
@@ -58,8 +58,8 @@ class CassandraMockTest < CassandraTest
   
   def test_get_range_reversed
     data = 3.times.map { |i| ["body-#{i.to_s}", "v"] }
-    hash = Cassandra::OrderedHash[data]
-    reversed_hash = Cassandra::OrderedHash[data.reverse]
+    hash = CassandraLegacy::OrderedHash[data]
+    reversed_hash = CassandraLegacy::OrderedHash[data.reverse]
     
     @twitter.insert(:Statuses, "all-keys", hash)
     
@@ -71,8 +71,8 @@ class CassandraMockTest < CassandraTest
   
   def test_get_range_reversed_slice
     data = 4.times.map { |i| ["body-#{i.to_s}", "v"] }
-    hash = Cassandra::OrderedHash[data]
-    sliced_hash = Cassandra::OrderedHash[data.reverse[1..-1]]
+    hash = CassandraLegacy::OrderedHash[data]
+    sliced_hash = CassandraLegacy::OrderedHash[data.reverse[1..-1]]
     
     @twitter.insert(:Statuses, "all-keys", hash)
     
@@ -89,7 +89,7 @@ class CassandraMockTest < CassandraTest
   
   def test_get_range_count
     data = 3.times.map { |i| ["body-#{i.to_s}", "v"] }
-    hash = Cassandra::OrderedHash[data]
+    hash = CassandraLegacy::OrderedHash[data]
     
     @twitter.insert(:Statuses, "all-keys", hash)
     

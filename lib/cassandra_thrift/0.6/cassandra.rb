@@ -1,4 +1,4 @@
-class Cassandra
+class CassandraLegacy
   def self.DEFAULT_TRANSPORT_WRAPPER
     Thrift::BufferedTransport
   end
@@ -16,7 +16,7 @@ class Cassandra
   end
 
   def inspect
-    "#<Cassandra:#{object_id}, @keyspace=#{keyspace.inspect}, @schema={#{
+    "#<CassandraLegacy:#{object_id}, @keyspace=#{keyspace.inspect}, @schema={#{
       schema(false).map {|name, hash| ":#{name} => #{hash['type'].inspect}"}.join(', ')
     }}, @servers=#{servers.inspect}>"
   end
@@ -46,7 +46,7 @@ class Cassandra
   # Remove all rows in the keyspace. Supports options <tt>:consistency</tt> and
   # <tt>:timestamp</tt>.
   # FIXME May not currently delete all records without multiple calls. Waiting
-  # for ranged remove support in Cassandra.
+  # for ranged remove support in CassandraLegacy.
   def clear_keyspace!(options = {})
     schema.keys.each { |column_family| clear_column_family!(column_family, options) }
   end

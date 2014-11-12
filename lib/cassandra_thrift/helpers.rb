@@ -1,4 +1,4 @@
-class Cassandra
+class CassandraLegacy
   module Helpers
     def extract_and_validate_params(column_family, keys, args, options)
       options = options.dup

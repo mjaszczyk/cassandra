@@ -1,5 +1,5 @@
 
-class Cassandra
+class CassandraLegacy
   # Abstract base class for comparable numeric column name types
   class Comparable
     class TypeError < ::TypeError #:nodoc:

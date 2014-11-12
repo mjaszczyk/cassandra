@@ -1,11 +1,11 @@
 
-class Cassandra
+class CassandraLegacy
   # A helper module you can include in your own class. Makes it easier 
-  # to work with Cassandra subclasses.
+  # to work with CassandraLegacy subclasses.
   module Constants
-    include Cassandra::Consistency
+    include CassandraLegacy::Consistency
         
-    Long = Cassandra::Long
-    OrderedHash = Cassandra::OrderedHash
+    Long = CassandraLegacy::Long
+    OrderedHash = CassandraLegacy::OrderedHash
   end
 end

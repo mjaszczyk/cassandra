@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'rake'
-require 'cassandra_thrift'
+require 'cassandra_legacy'
 
 gem_path = $LOAD_PATH.last.sub(/lib$/, "")
 

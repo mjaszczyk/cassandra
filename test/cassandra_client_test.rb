@@ -1,10 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 
 class CassandraClientTest < Test::Unit::TestCase
-  include Cassandra::Constants
+  include CassandraLegacy::Constants
   
   def setup
-    @twitter = Cassandra.new('Twitter', "127.0.0.1:9160", :retries => 2, :exception_classes => [])
+    @twitter = CassandraLegacy.new('Twitter', "127.0.0.1:9160", :retries => 2, :exception_classes => [])
   end
   
   def test_client_method_is_called

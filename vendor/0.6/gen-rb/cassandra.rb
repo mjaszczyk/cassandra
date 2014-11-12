@@ -9,7 +9,7 @@ require 'cassandra_types'
 require 'cassandra_constants'
 
     module CassandraThrift
-      module Cassandra
+      module CassandraLegacy
         class Client
           include ::Thrift::Client
 

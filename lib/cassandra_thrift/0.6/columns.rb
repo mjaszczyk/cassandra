@@ -1,4 +1,4 @@
-class Cassandra
+class CassandraLegacy
   # A bunch of crap, mostly related to introspecting on column types
   module Columns #:nodoc:
     private

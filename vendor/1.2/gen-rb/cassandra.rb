@@ -8,7 +8,7 @@ require 'thrift'
 require 'cassandra_types'
 
 module CassandraThrift
-  module Cassandra
+  module CassandraLegacy
     class Client
       include ::Thrift::Client
 

@@ -1,4 +1,4 @@
-class Cassandra
+class CassandraLegacy
   class Composite
     include ::Comparable
     attr_reader :parts

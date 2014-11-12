@@ -8,37 +8,37 @@ require 'json' unless defined?(JSON)
 
 here = File.expand_path(File.dirname(__FILE__))
 
-class Cassandra ; end
-unless Cassandra.respond_to?(:VERSION)
-  require "#{here}/cassandra_thrift/0.8"
+class CassandraLegacy ; end
+unless CassandraLegacy.respond_to?(:VERSION)
+  require "#{here}/cassandra_legacy/0.8"
 end
 
-$LOAD_PATH << "#{here}/../vendor/#{Cassandra.VERSION}/gen-rb"
-require "#{here}/../vendor/#{Cassandra.VERSION}/gen-rb/cassandra"
+$LOAD_PATH << "#{here}/../vendor/#{CassandraLegacy.VERSION}/gen-rb"
+require "#{here}/../vendor/#{CassandraLegacy.VERSION}/gen-rb/cassandra"
 
 $LOAD_PATH << "#{here}"
 
-require 'cassandra_thrift/helpers'
-require 'cassandra_thrift/array'
-require 'cassandra_thrift/time'
-require 'cassandra_thrift/comparable'
-require 'cassandra_thrift/long'
-require 'cassandra_thrift/composite'
-require 'cassandra_thrift/dynamic_composite'
-require 'cassandra_thrift/ordered_hash'
-require 'cassandra_thrift/columns'
-require 'cassandra_thrift/protocol'
-require 'cassandra_thrift/batch'
-require "cassandra_thrift/#{Cassandra.VERSION}/columns"
-require "cassandra_thrift/#{Cassandra.VERSION}/protocol"
-require "cassandra_thrift/cassandra"
-require "cassandra_thrift/#{Cassandra.VERSION}/cassandra"
-unless Cassandra.VERSION.eql?("0.6")
-  require "cassandra_thrift/column_family"
-  require "cassandra_thrift/keyspace"
+require 'cassandra_legacy/helpers'
+require 'cassandra_legacy/array'
+require 'cassandra_legacy/time'
+require 'cassandra_legacy/comparable'
+require 'cassandra_legacy/long'
+require 'cassandra_legacy/composite'
+require 'cassandra_legacy/dynamic_composite'
+require 'cassandra_legacy/ordered_hash'
+require 'cassandra_legacy/columns'
+require 'cassandra_legacy/protocol'
+require 'cassandra_legacy/batch'
+require "cassandra_legacy/#{CassandraLegacy.VERSION}/columns"
+require "cassandra_legacy/#{CassandraLegacy.VERSION}/protocol"
+require "cassandra_legacy/cassandra"
+require "cassandra_legacy/#{CassandraLegacy.VERSION}/cassandra"
+unless CassandraLegacy.VERSION.eql?("0.6")
+  require "cassandra_legacy/column_family"
+  require "cassandra_legacy/keyspace"
 end
-require 'cassandra_thrift/constants'
-require 'cassandra_thrift/debug' if ENV['DEBUG']
+require 'cassandra_legacy/constants'
+require 'cassandra_legacy/debug' if ENV['DEBUG']
 
 begin
   require "cassandra_native"
