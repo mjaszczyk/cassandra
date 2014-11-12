@@ -14,7 +14,7 @@ unless CassandraLegacy.respond_to?(:VERSION)
 end
 
 $LOAD_PATH << "#{here}/../vendor/#{CassandraLegacy.VERSION}/gen-rb"
-require "#{here}/../vendor/#{CassandraLegacy.VERSION}/gen-rb/cassandra"
+require "#{here}/../vendor/#{CassandraLegacy.VERSION}/gen-rb/cassandra_legacy"
 
 $LOAD_PATH << "#{here}"
 
@@ -32,7 +32,7 @@ require 'cassandra_legacy/batch'
 require "cassandra_legacy/#{CassandraLegacy.VERSION}/columns"
 require "cassandra_legacy/#{CassandraLegacy.VERSION}/protocol"
 require "cassandra_legacy/cassandra_legacy"
-require "cassandra_legacy/#{CassandraLegacy.VERSION}/cassandra"
+require "cassandra_legacy/#{CassandraLegacy.VERSION}/cassandra_legacy"
 unless CassandraLegacy.VERSION.eql?("0.6")
   require "cassandra_legacy/column_family"
   require "cassandra_legacy/keyspace"
